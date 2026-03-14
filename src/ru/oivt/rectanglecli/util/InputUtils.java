@@ -12,14 +12,14 @@ public class InputUtils {
             try {
                 value = sc.nextDouble();
                 if (value > 0) {
-                    sc.nextLine(); // очистка буфера
+                    sc.nextLine();
                     return value;
                 } else {
                     System.out.println("Ошибка: число должно быть больше 0. Попробуйте снова.");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Ошибка: введено не число. Попробуйте снова.");
-                sc.nextLine(); // сбросить неправильный ввод
+                sc.nextLine();
             }
         }
     }
