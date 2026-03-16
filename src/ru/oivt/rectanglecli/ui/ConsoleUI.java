@@ -41,28 +41,19 @@ public class ConsoleUI {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Периметр: " + String.format("%.2f", rect.perimeter()));
-                    pause();
+                    showPerimeter(rect);
                     break;
                 case 2:
-                    System.out.println("Площадь: " + String.format("%.2f", rect.area()));
-                    pause();
+                    showArea(rect);
                     break;
                 case 3:
-                    System.out.println("Диагональ: " + String.format("%.2f", rect.diagonal()));
-                    pause();
+                    showDiagonal(rect);
                     break;
                 case 4:
-                    System.out.println("Длина описанной окружности: " + String.format("%.2f", rect.getCircumference()));
-                    pause();
+                    showCircumference(rect);
                     break;
                 case 5:
-                    if (Math.abs(rect.getA() - rect.getB()) < EPS) {
-                        System.out.println("Радиус вписанной окружности: " + String.format("%.2f", rect.inscribedCircleRadius()));
-                    } else {
-                        System.out.println("Вписанная окружность существует только для квадрата");
-                    }
-                    pause();
+                    showInscribeCircleRadius(rect);
                     break;
                 case 6:
                     double aNew = InputUtils.readPositiveDouble(scanner, "Введите новую сторону a: ");
@@ -80,6 +71,35 @@ public class ConsoleUI {
                     pause();
             }
         }
+    }
+
+    private void showPerimeter(Rectangle rect) {
+        System.out.println("Периметр: " + String.format("%.2f", rect.perimeter()));
+        pause();
+    }
+
+    private void showArea(Rectangle rect) {
+        System.out.println("Площадь: " + String.format("%.2f", rect.area()));
+        pause();
+    }
+
+    private void showDiagonal(Rectangle rect) {
+        System.out.println("Диагональ: " + String.format("%.2f", rect.diagonal()));
+        pause();
+    }
+
+    private void showCircumference(Rectangle rect) {
+        System.out.println("Длина описанной окружности: " + String.format("%.2f", rect.getCircumference()));
+        pause();
+    }
+
+    private void showInscribeCircleRadius(Rectangle rect) {
+        if (Math.abs(rect.getA() - rect.getB()) < EPS) {
+            System.out.println("Радиус вписанной окружности: " + String.format("%.2f", rect.inscribedCircleRadius()));
+        } else {
+            System.out.println("Данная фигура не квадрат, радиус вписанной окружности считается только для квадрата.");
+        }
+        pause();
     }
 
     private void pause() {
