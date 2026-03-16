@@ -18,11 +18,13 @@ public class ConsoleUI {
 
         Rectangle rectangle = new Rectangle(a, b);
         System.out.println("Создан прямоугольник со сторонами " + a + " и " + b);
+        pause();
         showMenu(rectangle);
     }
 
     private void printHeader() {
         System.out.println("=== Программа расчета прямоугольника ===");
+        System.out.println();
     }
 
     private void showMenu(Rectangle rect) {
@@ -39,23 +41,28 @@ public class ConsoleUI {
 
             switch (choice) {
                 case 1:
-                    System.out.println("Периметр: " + rect.perimeter());
+                    System.out.println("Периметр: " + String.format("%.2f", rect.perimeter()));
+                    pause();
                     break;
                 case 2:
-                    System.out.println("Площадь: " + rect.area());
+                    System.out.println("Площадь: " + String.format("%.2f", rect.area()));
+                    pause();
                     break;
                 case 3:
-                    System.out.println("Диагональ: " + rect.diagonal());
+                    System.out.println("Диагональ: " + String.format("%.2f", rect.diagonal()));
+                    pause();
                     break;
                 case 4:
-                    System.out.println("Длина описанной окружности: " + rect.getCircumference());
+                    System.out.println("Длина описанной окружности: " + String.format("%.2f", rect.getCircumference()));
+                    pause();
                     break;
                 case 5:
                     if (Math.abs(rect.getA() - rect.getB()) < EPS) {
-                        System.out.println("Радиус вписанной окружности: " + rect.inscribedCircleRadius());
+                        System.out.println("Радиус вписанной окружности: " + String.format("%.2f", rect.inscribedCircleRadius()));
                     } else {
-                        System.out.println("Радиус вписанной окружности доступен только для квадрата.");
+                        System.out.println("Вписанная окружность существует только для квадрата");
                     }
+                    pause();
                     break;
                 case 6:
                     double aNew = InputUtils.readPositiveDouble(scanner, "Введите новую сторону a: ");
@@ -63,13 +70,20 @@ public class ConsoleUI {
                     rect.setA(aNew);
                     rect.setB(bNew);
                     System.out.println("Параметры обновлены.");
+                    pause();
                     break;
                 case 0:
                     System.out.println("Выход...");
                     return;
                 default:
                     System.out.println("Некорректный выбор, попробуйте снова.");
+                    pause();
             }
         }
+    }
+
+    private void pause() {
+        System.out.println("Нажмите Enter, чтобы продолжить...");
+        scanner.nextLine();
     }
 }
