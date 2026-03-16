@@ -16,6 +16,18 @@ public class Rectangle {
     public double getB() {
         return b;
     }
+    
+    public void setA(double a) {
+        if (a > 0) {
+            this.a = a;
+        }
+    }
+
+    public void setB(double b) {
+        if (b > 0) {
+            this.b = b;
+        }
+    }
 
     public double perimeter() {
         return 2 * (a + b);
@@ -27,6 +39,10 @@ public class Rectangle {
 
     public double diagonal() {
         return Math.sqrt(a * a + b * b);
+    }
+    
+    public double getCircumference() {
+        return Math.PI * diagonal();
     }
 
     public double inscribedCircleRadius() {
